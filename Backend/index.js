@@ -21,7 +21,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 // Available Routes
 const authRoutes = require("./routes/auth");
 // const taskRoutes = require("./routes/task");
-// const projectRoutes = require("./routes/project");
+const projectRoutes = require("./routes/project");
 
 app.use("/api/auth", authRoutes);
 // app.use("/api/tasks", taskRoutes);

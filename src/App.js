@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
-import Logout from "./components/Logout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Demopage from "./components/Demopage";
 import OTPVerification from "./components/OTPVerification";
-import UserProfile from "./components/UserProfile";
-
+import Navbar from "./components/Navbar";
+import Project from "./components/Project";
+import TaskBoard from "./components/TaskBoard";
 const App = () => {
   return (
     <Router>
@@ -21,12 +21,29 @@ const App = () => {
           path="/select"
           element={
             <ProtectedRoute>
-              <Logout />
-              <UserProfile/>
+              <Navbar/>  
               <Demopage />
             </ProtectedRoute>
           }
         />
+         <Route
+            path="/project"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <Project/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/task"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <TaskBoard/>
+              </ProtectedRoute>
+            }
+          />
       </Routes>
     </Router>
   );
