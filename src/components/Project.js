@@ -37,46 +37,56 @@ const Project = () => {
   };
 
   return (
-    <div>
-      <h1>Projects</h1>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Projects</h1>
 
       {/* Project Creation Form */}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="projectName">Project Name</label>
-          <input
-            type="text"
-            id="projectName"
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-            required
-          />
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <form onSubmit={handleSubmit} className="mb-4">
+            <div className="mb-3">
+              <label htmlFor="projectName" className="form-label">Project Name</label>
+              <input
+                type="text"
+                id="projectName"
+                className="form-control"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="projectDescription" className="form-label">Project Description</label>
+              <textarea
+                id="projectDescription"
+                className="form-control"
+                value={projectDescription}
+                onChange={(e) => setProjectDescription(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100">Create Project</button>
+          </form>
         </div>
-        <div>
-          <label htmlFor="projectDescription">Project Description</label>
-          <textarea
-            id="projectDescription"
-            value={projectDescription}
-            onChange={(e) => setProjectDescription(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Create Project</button>
-      </form>
+      </div>
 
-      <h2>All Projects</h2>
-      <ul>
+      <h2 className="text-center mb-4">All Projects</h2>
+      <div className="row">
         {projects.length > 0 ? (
           projects.map((project) => (
-            <li key={project._id}>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-            </li>
+            <div key={project._id} className="col-md-4 mb-4">
+              <div className="card shadow-sm">
+                <div className="card-body">
+                  <h5 className="card-title">{project.name}</h5>
+                  <p className="card-text">{project.description}</p>
+                </div>
+              </div>
+            </div>
           ))
         ) : (
-          <p>No projects available.</p>
+          <p className="text-center">No projects available.</p>
         )}
-      </ul>
+      </div>
     </div>
   );
 };
