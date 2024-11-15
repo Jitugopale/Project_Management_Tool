@@ -9,6 +9,8 @@ import OTPVerification from "./components/OTPVerification";
 import Navbar from "./components/Navbar";
 import Project from "./components/Project";
 import TaskBoard from "./components/TaskBoard";
+// import Dashboard from "./components/Dashboard";
+import TaskCard from "./components/TaskCard";
 const App = () => {
   return (
     <Router>
@@ -44,6 +46,33 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/taskcard"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <TaskCard/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tasklist"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <TaskCard/>
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <Dashboard/>
+              </ProtectedRoute>
+            }
+          /> */}
       </Routes>
     </Router>
   );

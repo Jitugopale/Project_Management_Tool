@@ -3,14 +3,17 @@ import axios from 'axios';
 
 const Project = () => {
   // State to manage form input and project list
-  const [projectName, setProjectName] = useState('');
+  const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const [projectDueDate, setProjectDueDate] = useState('');
+  const [projectPriority, setProjectPriority] = useState('');
+  const [projectStatus, setProjectStatus] = useState('');
   const [projects, setProjects] = useState([]);
 
   // Fetch all projects from the backend
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/projects');
+      const response = await axios.get('http://localhost:5000/api/projects/projects');
       setProjects(response.data);
     } catch (err) {
       console.error('Error fetching projects:', err);
@@ -24,10 +27,16 @@ const Project = () => {
   // Handle form submission to create a new project
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newProject = { name: projectName, description: projectDescription };
-    
+    const newProject = {
+      title: projectTitle,
+      description: projectDescription,
+      dueDate: projectDueDate,
+      priority: projectPriority,
+      status: projectStatus
+    };
+
     try {
-      await axios.post('http://localhost:5000/projects', newProject);
+      await axios.post('http://localhost:5000/api/projects/projects', newProject);
       alert('Project created successfully');
       fetchProjects(); // Re-fetch the project list after creation
     } catch (err) {
@@ -45,13 +54,13 @@ const Project = () => {
         <div className="col-md-6">
           <form onSubmit={handleSubmit} className="mb-4">
             <div className="mb-3">
-              <label htmlFor="projectName" className="form-label">Project Name</label>
+              <label htmlFor="projectTitle" className="form-label">Project Title</label>
               <input
                 type="text"
-                id="projectName"
+                id="projectTitle"
                 className="form-control"
-                value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
+                value={projectTitle}
+                onChange={(e) => setProjectTitle(e.target.value)}
                 required
               />
             </div>
@@ -62,6 +71,39 @@ const Project = () => {
                 className="form-control"
                 value={projectDescription}
                 onChange={(e) => setProjectDescription(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="projectDueDate" className="form-label">Due Date</label>
+              <input
+                type="date"
+                id="projectDueDate"
+                className="form-control"
+                value={projectDueDate}
+                onChange={(e) => setProjectDueDate(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="projectPriority" className="form-label">Priority</label>
+              <input
+                type="text"
+                id="projectPriority"
+                className="form-control"
+                value={projectPriority}
+                onChange={(e) => setProjectPriority(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="projectStatus" className="form-label">Status</label>
+              <input
+                type="text"
+                id="projectStatus"
+                className="form-control"
+                value={projectStatus}
+                onChange={(e) => setProjectStatus(e.target.value)}
                 required
               />
             </div>
@@ -77,8 +119,11 @@ const Project = () => {
             <div key={project._id} className="col-md-4 mb-4">
               <div className="card shadow-sm">
                 <div className="card-body">
-                  <h5 className="card-title">{project.name}</h5>
+                  <h5 className="card-title">{project.title}</h5>
                   <p className="card-text">{project.description}</p>
+                  <p className="card-text">Due Date: {project.dueDate}</p>
+                  <p className="card-text">Priority: {project.priority}</p>
+                  <p className="card-text">Status: {project.status}</p>
                 </div>
               </div>
             </div>

@@ -33,10 +33,13 @@ const Navbar = () => {
               <Link className="nav-link" to="/task">Task Board</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/health-metrics">Health Metrics</Link>
+              <Link className="nav-link" to="/taskcard">Task Card</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/track-progress">Track Progress</Link> {/* Match styling with others */}
+              <Link className="nav-link" to="/tasklist">Task List</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">Dashboard</Link> {/* Match styling with others */}
             </li>
           </ul>
           <ul className="navbar-nav ms-auto">
