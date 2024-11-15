@@ -50,6 +50,6 @@ const UserSchema = new Schema({
     default: null,
     }
 });
-const User = mongoose.model('user',UserSchema);
+const User = mongoose.model('User',UserSchema);
 // User.createIndexes();
 module.exports= User

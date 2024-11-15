@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL for your API (update the URL accordingly)
-const API_URL = 'http://localhost:5000/api/tasks';
+const API_URL = 'http://localhost:5000/api/tasks/get-tasks';
 
 // Fetch all tasks from the backend
 export const getTasks = async () => {
@@ -13,3 +13,4 @@ export const getTasks = async () => {
         return []; // Return an empty array if there is an error
     }
 };
+

@@ -10,7 +10,9 @@ import Navbar from "./components/Navbar";
 import Project from "./components/Project";
 import TaskBoard from "./components/TaskBoard";
 // import Dashboard from "./components/Dashboard";
-import TaskCard from "./components/TaskCard";
+// import TaskCard from "./components/TaskCard";
+import TaskList from "./components/TaskList";
+import AddTask from "./components/AddTask";
 const App = () => {
   return (
     <Router>
@@ -38,6 +40,15 @@ const App = () => {
             }
           />
           <Route
+            path="/add-task"
+            element={
+              <ProtectedRoute>
+                <Navbar />
+                <AddTask/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/task"
             element={
               <ProtectedRoute>
@@ -47,20 +58,11 @@ const App = () => {
             }
           />
           <Route
-            path="/taskcard"
-            element={
-              <ProtectedRoute>
-                <Navbar />
-                <TaskCard/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/tasklist"
             element={
               <ProtectedRoute>
                 <Navbar />
-                <TaskCard/>
+                <TaskList/>
               </ProtectedRoute>
             }
           />

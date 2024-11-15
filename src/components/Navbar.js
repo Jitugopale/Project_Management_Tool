@@ -30,10 +30,10 @@ const Navbar = () => {
               <Link className="nav-link" to="/project">Project</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/task">Task Board</Link>
+              <Link className="nav-link" to="/add-task">Add Task</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/taskcard">Task Card</Link>
+              <Link className="nav-link" to="/task">Task Board</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/tasklist">Task List</Link>

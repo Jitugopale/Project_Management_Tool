@@ -1,5 +1,4 @@
 const http = require("http");
-// const socketIo = require("socket.io"); // Import Socket.IO
 const mongoose = require("mongoose");
 const connectToMongo = require('./db');
 const cors = require('cors');
@@ -24,9 +23,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);     // Enable task routes
 app.use("/api/projects", projectRoutes); // Enable project routes
 
-// WebSocket Setup (Socket.IO)
+
 const server = http.createServer(app);   // Create an HTTP server
-// const io = socketIo(server);             // Initialize Socket.IO with the HTTP server
+
 
 // Socket.IO event handling
 // io.on("connection", (socket) => {

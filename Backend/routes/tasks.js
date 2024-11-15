@@ -4,7 +4,7 @@ const authMiddleware = require('../middleware/fetchUser');
 const router = express.Router();
 
 // Create Task Route
-router.post('/add-task', async (req, res) => {
+router.post('/tasks', async (req, res) => {
     const { title, description, dueDate, priority, assignees, status } = req.body;
 
     try {
@@ -26,7 +26,7 @@ router.post('/add-task', async (req, res) => {
 });
 
 // Get All Tasks Route
-router.get('/gettasks', async (req, res) => {
+router.get('/get-tasks', async (req, res) => {
     try {
         const tasks = await Task.find().populate("assignees").populate("project");
         res.json(tasks);
@@ -37,7 +37,7 @@ router.get('/gettasks', async (req, res) => {
 });
 
 // Update Task Route
-router.put('/tasks/:id', authMiddleware, async (req, res) => {
+router.post('/tasks/:id', async (req, res) => {
     const { title, description, dueDate, priority, assignees, status } = req.body;
 
     try {
@@ -55,6 +55,23 @@ router.put('/tasks/:id', authMiddleware, async (req, res) => {
         console.error(error.message);
         res.status(500).send('Server error');
     }
+});
+
+
+// Delete Task Route
+router.delete('/delete-tasks/:id', async (req, res) => {
+  try {
+      const task = await Task.findById(req.params.id);
+      if (!task) return res.status(404).json({ msg: 'Task not found' });
+
+      // Delete the task
+      await Task.findByIdAndDelete(req.params.id);
+
+      res.json({ msg: 'Task deleted successfully' });
+  } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server error');
+  }
 });
 
 module.exports = router;
