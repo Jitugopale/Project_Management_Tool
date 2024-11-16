@@ -36,9 +36,6 @@ const Navbar = () => {
               <Link className="nav-link" to="/task">Task Board</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/tasklist">Task List</Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/dashboard">Dashboard</Link> {/* Match styling with others */}
             </li>
           </ul>

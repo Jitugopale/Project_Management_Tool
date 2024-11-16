@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Project = () => {
-  // State to manage form input and project list
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [projectDueDate, setProjectDueDate] = useState('');
@@ -44,6 +43,21 @@ const Project = () => {
       alert('Error creating project');
     }
   };
+
+  // Handle project deletion
+// Handle project deletion
+const handleDelete = async (projectId) => {
+  try {
+    // Updated the URL to match the backend delete route
+    await axios.delete(`http://localhost:5000/api/projects/delete-project/${projectId}`);
+    alert('Project deleted successfully');
+    fetchProjects(); // Re-fetch the project list after deletion
+  } catch (err) {
+    console.error('Error deleting project:', err);
+    alert('Error deleting project');
+  }
+};
+
 
   return (
     <div className="container mt-5">
@@ -124,6 +138,12 @@ const Project = () => {
                   <p className="card-text">Due Date: {project.dueDate}</p>
                   <p className="card-text">Priority: {project.priority}</p>
                   <p className="card-text">Status: {project.status}</p>
+                  <button
+                    className="btn btn-danger mt-2"
+                    onClick={() => handleDelete(project._id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>

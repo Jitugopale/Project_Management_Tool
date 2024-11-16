@@ -11,7 +11,7 @@ import Project from "./components/Project";
 import TaskBoard from "./components/TaskBoard";
 // import Dashboard from "./components/Dashboard";
 // import TaskCard from "./components/TaskCard";
-import TaskList from "./components/TaskList";
+// import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 const App = () => {
   return (
@@ -54,15 +54,6 @@ const App = () => {
               <ProtectedRoute>
                 <Navbar />
                 <TaskBoard/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/tasklist"
-            element={
-              <ProtectedRoute>
-                <Navbar />
-                <TaskList/>
               </ProtectedRoute>
             }
           />

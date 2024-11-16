@@ -37,7 +37,7 @@ router.get('/get-tasks', async (req, res) => {
 });
 
 // Update Task Route
-router.post('/tasks/:id', async (req, res) => {
+router.post('/update-tasks/:id', async (req, res) => {
     const { title, description, dueDate, priority, assignees, status } = req.body;
 
     try {
